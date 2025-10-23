@@ -31,5 +31,12 @@ for (let i = 0; i < 10; i++) {
 axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
     .then(response => {
       // Aggiungo l'email all'array
-      emails.push(response.data.response);})
+      emails.push(response.data.response);
+    
+    // Quando ho tutte le 10 email, le stampo
+      if (emails.length === 10) {
+        const ul = document.createElement('ul');
+    
+    }
+    });
 }
