@@ -23,3 +23,10 @@
   - .then()
   - .catch()
   */
+
+// Creo un array vuoto per salvare le email
+const emails = [];
+// Loop per generare 10 elementi
+for (let i = 0; i < 10; i++) {
+
+}
