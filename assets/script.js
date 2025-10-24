@@ -25,24 +25,36 @@
   */
 
 // Creo un array vuoto per salvare le email
-const emails = [];
-// Loop per generare 10 elementi
-for (let i = 0; i < 10; i++) {
-    axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-        .then(response => {
-            // Aggiungo l'email all'array
-            emails.push(response.data.response);
+function generateEmails() {
+    const emails = [];
+    const oldList = document.querySelector('ul');
+    if (oldList) {
+        oldList.remove();
+    }
 
-            // Quando ho tutte le 10 email, le stampo
-            if (emails.length === 10) {
-                const ul = document.createElement('ul');
-                // per ogni Email creo un li
-                emails.forEach(email => {
-                    const li = document.createElement('li');
-                    li.textContent = email;
-                    ul.appendChild(li);
-                });
-                document.body.appendChild(ul);
-            }
-        });
+    // Loop per generare 10 elementi
+    for (let i = 0; i < 10; i++) {
+        axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+            .then(response => {
+                // Aggiungo l'email all'array
+                emails.push(response.data.response);
+                // Quando ho tutte le 10 email, le stampo
+                if (emails.length === 10) {
+                    const ul = document.createElement('ul');
+                    // per ogni Email creo un li
+                    emails.forEach(email => {
+                        const li = document.createElement('li');
+                        li.textContent = email;
+                        ul.appendChild(li);
+                    });
+                    document.body.appendChild(ul);
+                }
+
+
+            });
+    }
+    console.log(emails);
+
+
 }
+document.getElementById('generateBtn').addEventListener('click', generateEmails);
